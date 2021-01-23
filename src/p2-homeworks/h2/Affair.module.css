@@ -1,0 +1,26 @@
+.affair {
+    display: grid;
+    justify-items: stretch;
+    align-items: center;
+    grid-template-columns: 30px 150px 60px 30px;
+    grid-template-rows: 30px;
+    grid-row-gap: 2px;
+}
+
+.id {
+    background-color: khaki;
+    border-radius: 15px;
+    border: white solid 2px;
+    text-align: center;
+}
+
+.name {
+    background-color: yellow;
+    padding-left: 10px;
+    border: white solid 2px;
+}
+
+.priority {
+    font-size: 0.6em;
+    padding-left: 10px;
+}
