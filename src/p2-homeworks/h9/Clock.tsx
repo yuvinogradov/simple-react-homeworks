@@ -1,52 +1,70 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import SuperButton from "../h4/common/c2-SuperButton/SuperButton";
+import s from "./Clock.module.css";
 
 function Clock() {
-    const [timerId, setTimerId] = useState<number>(0);
-    const [date, setDate] = useState<Date>();
-    const [show, setShow] = useState<boolean>(false);
+  const [timerId, setTimerId] = useState<number>(0);
+  const [date, setDate] = useState<Date>();
+  const [show, setShow] = useState<boolean>(false);
 
-    const stop = () => {
-        // stop
-    }
-    const start = () => {
-        stop();
-        const id: number = window.setInterval(() => {
-            // setDate
-        }, 1000);
-        setTimerId(id);
-    }
+  const stop = () => {
+    clearInterval(timerId);
+    setDate(undefined);
+    // stop
+  };
+  const start = () => {
+    stop();
+    const dateObj = new Date(); // устанавливаем тут значение,
+    setDate(dateObj); // чтобы время сразу отображалось
 
-    const onMouseEnter = () => {
-        // show
-    };
-    const onMouseLeave = () => {
-        // close
-    };
+    const id: number = window.setInterval(() => {
+      const dateObj = new Date();
+      setDate(dateObj);
+    }, 1000);
+    setTimerId(id);
+    console.log(dateObj);
+  };
 
-    const stringTime = "Time"; // fix with date
-    const stringDate = "Date"; // fix with date
+  const onMouseEnter = () => {
+    setShow(true);
+  };
+  const onMouseLeave = () => {
+    setShow(false);
+  };
 
-    return (
-        <div>
-            <div
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
-            >
-                {stringTime}
-            </div>
+  const stringTime = date
+    ? date?.getHours() +
+      ":" +
+      ("00" + date?.getMinutes()).slice(-2) +
+      ":" +
+      ("00" + date?.getSeconds()).slice(-2)
+    : "Press start"; //"Time"; // fix with date
 
-            {show && (
-                <div>
-                    {stringDate}
-                </div>
-            )}
+  const stringDate = date
+    ? ("00" + date?.getDate()).slice(-2) +
+      "." +
+      ("00" + date?.getMonth() + 1).slice(-2) +
+      "." +
+      date?.getFullYear()
+    : undefined; //"Date"; // fix with date
 
-            <SuperButton onClick={start}>start</SuperButton>
-            <SuperButton onClick={stop}>stop</SuperButton>
-
+  return (
+    <div>
+      <div className={s.dateTimeBox}>
+        <div
+          className={s.clock}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
+          {stringTime}
         </div>
-    );
+
+        {show && <div className={s.date}>{stringDate}</div>}
+      </div>
+      <SuperButton onClick={start}>start</SuperButton>
+      <SuperButton onClick={stop}>stop</SuperButton>
+    </div>
+  );
 }
 
 export default Clock;
