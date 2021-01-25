@@ -1,26 +1,33 @@
-export const homeWorkReducer = (state: any, action: any): any => {
+
+
+export type homeworkReducerActionType = {
+  type: 'sort' | 'check'
+  payload: 'up' | 'down' | number
+}
+
+export type PersonType = {
+  _id: number
+  name: string
+  age: number
+}
+
+export type PersonsStateType =  Array<PersonType>
+
+export const homeWorkReducer = (state: PersonsStateType, action: homeworkReducerActionType): PersonsStateType => {
   switch (action.type) {
     case "sort": {
-      //console.log(action.payload);
-      console.log(state.map((a:any) => a.name));
-
-      // const arr = [1, 4, 3];
-      // console.log(arr.sort((a:any, b) => b - a));
-      // const sortKey = action.payload === "down" ? -1 : 1;
-      // const newState = state.sort((a:any, b:any) => {
-      //   return a.name > b.name ? sortKey : sortKey * -1;
-      // });
+      //console.log(state.map((a:any) => a.name));
 
       const sortKey = action.payload === "down" ? -1 : 1;
-      const newState = [...state].sort((a:any, b:any) => {
+      const newState = [...state].sort((a:PersonType, b:PersonType) => {
         return a.name > b.name ? sortKey : sortKey * -1;
       });
 
-      console.log(newState.map((a:any) => a.name));
+      console.log(newState.map((a:PersonType) => a.name));
       return newState;
     }
     case "check": {
-      return  [...state].filter((person:any) => person.age >= action.payload);
+      return  [...state].filter((person:PersonType) => person.age >= action.payload);
     }
     default:
       return state;

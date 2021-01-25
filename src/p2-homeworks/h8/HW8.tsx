@@ -31,7 +31,7 @@ function HW8() {
     }
 
     const Check18 = () => {
-        setPeople(homeWorkReducer(initialPeople, {type: "check", payload: "18"}));
+        setPeople(homeWorkReducer(initialPeople, {type: "check", payload: 18}));
     }
 
     return (
