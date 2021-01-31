@@ -42,7 +42,7 @@ function HW8() {
                 {finalPeople}
             </div>
             <div>
-                <SuperButton onClick={() => sortUp()}>Sort up</SuperButton>
+                <SuperButton onClick={sortUp}>Sort up</SuperButton>
             </div>
             <div>
                 <SuperButton onClick={sortDown}>Sort down</SuperButton>

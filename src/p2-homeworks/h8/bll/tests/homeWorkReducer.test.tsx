@@ -20,8 +20,6 @@ test("sort name up", () => {
     payload: "up"
   });
 
-  //console.log(newState);
-  // expect(newState.map((a) => a.name)).toBe("Александр");
   expect(newState[0].name).toBe("Кот");
 });
 test("sort name down", () => {

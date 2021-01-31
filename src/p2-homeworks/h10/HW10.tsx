@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SuperButton from "../h4/common/c2-SuperButton/SuperButton";
 import { loadingAC } from "./bll/loadingReducer";
+import store from "./bll/store";
 
 const Loader = () => {
   return (
@@ -32,13 +33,17 @@ const Loader = () => {
     </svg>
   );
 };
+type StateType = {
+    loading: boolean
+}
+
 
 function HW10() {
   // useSelector, useDispatch
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state: StateType) => state.loading);
   //const loading = false;
-
+    console.log('loading:', loading)
   console.log("store:", store.getState());
 
   const setLoading = () => {
