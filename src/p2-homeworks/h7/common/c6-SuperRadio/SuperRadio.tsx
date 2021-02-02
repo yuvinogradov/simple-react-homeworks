@@ -25,7 +25,7 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
 }) => {
   const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
     // onChange, onChangeOption  <--- Не понял зачем тут две штуки. Юра
-     alert(e.currentTarget.value);
+    //alert(e.currentTarget.value);
 
     onChangeOption && onChangeOption(e.currentTarget.value);
   };
