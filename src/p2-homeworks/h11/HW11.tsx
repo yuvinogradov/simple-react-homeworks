@@ -4,15 +4,16 @@ import SuperDoubleRange from "./common/c8-SuperDoubleRange/SuperDoubleRange";
 import s from "./HW11.module.css";
 
 function HW11() {
-  const [value1, setValue1] = useState(0);
-  const [value2, setValue2] = useState(100);
+  const [value1, setValue1] = useState(20);
+  const [value2, setValue2] = useState(80);
 
   const changeValue1Handler = (e: any) => {
     setValue1(e.currentTarget.value);
   };
 
-  const changeValue2Handler = (e: any) => {
-    setValue2(e.currentTarget.value);
+  const changeValuesHandler = (value: Array<any>) => {
+    setValue1(value[0]);
+    setValue2(value[1]);
   };
 
   return (
@@ -20,7 +21,7 @@ function HW11() {
       <hr />
       homeworks 11
       {/*should work (должно работать)*/}
-      <div>
+      <div className={s.rangeContainer}>
         <div className={s.rangeValue}>{value1}</div>
         <SuperRange
           onChange={changeValue1Handler}
@@ -28,12 +29,14 @@ function HW11() {
           // сделать так чтоб value1 изменялось
         />
       </div>
-      <div>
-        <span>{value1}</span>
+      <div className={s.doubleRangeContainer}>
         <SuperDoubleRange
-        // сделать так чтоб value1 и value2 изменялось
+          value={[+value1, +value2]}
+          onChangeRange={changeValuesHandler}
+          // сделать так чтоб value1 и value2 изменялось
         />
-        <span>{value2}</span>
+        <div>{value1}</div>
+        <div>{value2}</div>
       </div>
       <hr />
       {/*для личного творчества, могу проверить*/}

@@ -41,6 +41,7 @@ const SuperRange: React.FC<SuperRangePropsType> = ({
         type={"range"}
         onChange={onChangeCallback}
         className={finalRangeClassName}
+        // style={{ height: "25px", WebkitFilter: "blur(1px) saturate(2)" }}
         value={value}
         {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
       />
