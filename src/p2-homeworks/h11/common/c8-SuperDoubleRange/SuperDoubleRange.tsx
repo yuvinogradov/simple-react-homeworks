@@ -52,8 +52,8 @@ type SuperDoubleRangePropsType = {
 const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = ({
   onChangeRange,
   value,
-  min = 0,
-  max = 60,
+  min,
+  max,
   step = 1,
   disable = false
   // min, max, step, disable, ...
@@ -65,7 +65,12 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = ({
     onChangeRange && onChangeRange(value);
   };
 
-  console.log("VALUE:", value);
+  // console.log("VALUE:", value);
+  // const newValue = [...value];
+  // if (value[0] < min) newValue[0] = min;
+  // if (value[1] > max) newValue[1] = 44;
+  // console.log("newVALUE:", value);
+
   return (
     <>
       {/* <input type={"range"} value={value} /> */}

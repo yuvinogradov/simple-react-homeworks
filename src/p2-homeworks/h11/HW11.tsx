@@ -33,6 +33,8 @@ function HW11() {
         <SuperDoubleRange
           value={[+value1, +value2]}
           onChangeRange={changeValuesHandler}
+          min={0}
+          max={100}
           // сделать так чтоб value1 и value2 изменялось
         />
         <div>{value1}</div>
