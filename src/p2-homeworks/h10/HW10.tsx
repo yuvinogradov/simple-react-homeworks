@@ -1,56 +1,45 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import SuperButton from "../h4/common/c2-SuperButton/SuperButton";
-import { loadingAC } from "./bll/loadingReducer";
-import store from "./bll/store";
+import {loadingAC} from "./bll/loadingReducer";
 import Loader from "./Loader";
 
 type StateType = {
-  loading: boolean;
+    loading: boolean;
 };
 
 function HW10() {
-  // useSelector, useDispatch
-  const dispatch = useDispatch();
-  const loading = useSelector((state: StateType) => state.loading);
-  //const loading = false;
-  console.log("loading:", loading);
-  console.log("store:", store.getState());
+    // useSelector, useDispatch
+    const dispatch = useDispatch();
+    const loading = useSelector((state: StateType) => state.loading);
 
-  const setLoading = () => {
-    // dispatch({
-    //   type: "SET_LOADING",
-    //   payload: true
-    // });
-    console.log("loadingAC(true) =", loadingAC(true));
+    const setLoading = () => {
+        dispatch(loadingAC(true));
+        setTimeout(() => dispatch(loadingAC(false)), 2000);
 
-    dispatch(loadingAC(true));
-    setTimeout(() => dispatch(loadingAC(false)), 2000);
+        console.log("loading...");
+    };
 
-    console.log("loading...");
-  };
-  //console.log(loading.loading);
-
-  return (
-    <div>
-      <hr />
-      homeworks 10
-      {/*should work (должно работать)*/}
-      {loading ? (
+    return (
         <div>
-          <Loader />
+            <hr/>
+            homeworks 10
+            {/*should work (должно работать)*/}
+            {loading ? (
+                <div>
+                    <Loader/>
+                </div>
+            ) : (
+                <div>
+                    <SuperButton onClick={setLoading}>set loading...</SuperButton>
+                </div>
+            )}
+            <hr/>
+            {/*для личного творчества, могу проверить*/}
+            {/*<Alternative/>*/}
+            <hr/>
         </div>
-      ) : (
-        <div>
-          <SuperButton onClick={setLoading}>set loading...</SuperButton>
-        </div>
-      )}
-      <hr />
-      {/*для личного творчества, могу проверить*/}
-      {/*<Alternative/>*/}
-      <hr />
-    </div>
-  );
+    );
 }
 
 export default HW10;

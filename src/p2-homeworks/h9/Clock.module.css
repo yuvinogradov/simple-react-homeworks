@@ -1,13 +1,14 @@
 .clock {
-  font-size: 1.4em;
+    font-size: 1.4em;
 }
 
 .date {
-  font-size: 0.7em;
-  text-align: center;
+    font-size: 0.7em;
+    text-align: center;
 }
+
 .dateTimeBox {
-  margin: 20px 10px;
-  height: 40px;
-  width: fit-content;
+    margin: 20px 10px;
+    height: 40px;
+    width: fit-content;
 }
